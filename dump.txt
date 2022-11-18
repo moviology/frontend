@@ -1,0 +1,76 @@
+<script>
+    import { onMount } from "svelte";
+    // const endpoint = "http://localhost:8001/view_biodata/wbfpwnrclzvhjhnwpyunafazzqoufcmfeigqechfmqcxyxyatn";
+    // let biodata = [];
+    let newUser = []
+
+    // onMount(async function () {
+    //     const response = await fetch(endpoint);
+    //     const data = await response.json();
+    //     console.log(data)
+    //     biodata = data
+    // });
+
+    function hello(e){
+        const formData = new FormData(e.target);
+
+        const data = {};
+        for (let field of formData) {
+        const [key, value] = field;
+        data[key] = value;
+        }
+        console.log(data)
+    }
+
+
+    function register(e){
+        const formData = new FormData(e.target);
+
+        const data = {};
+        for (let field of formData) {
+            const [key, value] = field;
+            data[key] = value;
+        }
+        console.log(data)
+
+       
+
+    }
+
+    let registerUser = '{ "name":"John" , "email":"jonh@john.john", "password": "john" }'
+
+    const obj = JSON.parse(registerUser)
+
+    const newEndpoint = 'http://localhost:8001/register/' + obj;
+
+   console.log(obj)
+        
+    // onMount(async function () {
+    // const response = await fetch(newEndpoint);
+    // const userData = await response.json();
+    // newUser = userData
+    // console.log(newUser)
+    // });
+    
+
+
+</script>
+
+
+<!-- {#each biodata as entry}
+<div>
+  <p>{entry.timestamp}</p>
+</div>
+{/each} -->
+
+<form on:submit={hello} method="post">
+    <input autocomplete="off" name="fakename" placeholder="Fakename" type="text">
+    <input type="submit">
+</form>
+
+<form on:submit={register} method="post">
+    <input autocomplete="off" name="name" placeholder="Name" type="text">
+    <input autocomplete="off" name="email" placeholder="Email" type="email">
+    <input autocomplete="off" name="password" placeholder="Password" type="password">
+    <input type="submit">
+</form>
