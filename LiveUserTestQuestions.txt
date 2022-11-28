@@ -1,0 +1,89 @@
+How this test will work:
+
+1. You will be shown to your seat
+2. We will put sweat monitors on your index and middle finger, as well as a heart rate monitor on your wrist
+3. You will be shown a 5–20-minute movie clip, which will range from a horror movie to a comedy
+4. While you are watching the movie, we will be monitoring your heart rate and sweat levels
+5. After the movie, we will ask you to rate the movie on a scale of 1-10 as well as answer a few questions
+
+
+Questions (Audience)
+ 
+•	What would you rate your experience on a scale of 1 to 10
+•	Q1: Did you enjoy the movie?
+•	Q2: Did you find the movie scary?
+•	Q3: Did you find the movie funny?
+•	Q4: Did you find the movie boring?
+•	Q5: Did you at any point feel any discomfort caused by the monitors?
+•	Q6: How did you feel about this test?
+•	Q7: Would you do this test again?
+•	Q8: If not, why not?
+•	Q9: What about the test would you want to change?
+•	Q10: After the interview, did the rating of your experience change at all
+•	Q11: Do you have any other comments or questions?
+ 
+ 
+
+
+ 
+Questions (Director)
+
+•	What would you rate your experience on a scale of 1 to 10
+•	Q1: As a horror movie director, what sort of reaction do you hope to get from the audience?
+•	Q2: Did you get the reaction you hoped for?
+•	Q3: Did you find the system easy to use? 
+•	Q4: Did you find the system intuitive?
+•	Q5: Was there anything confusing or difficult about the website or flow of the website?
+•	Q6: Would you ever use this website as an aspiring movie director?
+•	Q7: If not, explain why 
+•	Q8: What do you think of the layout of the website?
+•	Q9: What do you think of the colour scheme?
+•	Q10: Do you have any suggestions or improvements for the website?
+•	Q11: Would you do this test again?
+•	Q12: If not, why not?
+•	Q13: What about the test would you want to change?
+•	Q14: After the interview, did the rating of your experience change at all
+•	Q15: Do you have any final comments or questions?
+
+
+
+
+
+ Final Analysis (Moviology Test Team)
+
+•	Q1.1: What did the test user dislike about the colour scheme of the application?
+•	A1.1: What colour did they recommend?
+•	Q1.2: What did the test user like about the colour scheme of the application?
+•	A1.2: What about the colour scheme did they like?
+
+•	Q2.1: What did the test user dislike about the layout of the application?
+•	A2.1: What layout did they recommend?
+•	Q2.2: What did the test user like about the layout of the application?
+•	A2.2: What about the layout did they like?
+
+•	Q3.1: What did the test user dislike about the functionality of the application?
+•	A3.1: What functionality did they recommend?
+•	Q3.2: What did the test user like about the functionality of the application?
+•	A3.2: What about the functionality did they like?
+
+•	Q4.1: What did the test user dislike about the overall design of the application?
+•	A4.1: What design did they recommend?
+•	Q4.2: What did the test user like about the overall design of the application?
+•	A4.2: What about the design did they like?
+
+•	Q5.1: What did the test user dislike about the overall usability of the application?
+•	A5.1: What usability did they recommend?
+•	Q5.2: What did the test user like about the overall usability of the application?
+•	A5.2: What about the usability did they like?
+
+•	Q6.1: What did the test user dislike about the overall performance of the application?
+•	A6.1: What performance did they recommend?
+•	Q6.2: What did the test user like about the overall performance of the application?
+•	A6.2: What about the performance did they like?
+
+•	Q7.1: What did the test user dislike about the overall user interface of the application?
+•	A7.1: What user interface did they recommend?
+•	Q7.2: What did the test user like about the overall user interface of the application?
+•	A7.2: What about the user interface did they like?
+
+Final Notes
