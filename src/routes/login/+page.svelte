@@ -1,4 +1,77 @@
+<script>
+const postData = {
+    email: 'silvester@weebhood.com',
+    password: 'silvester',
+  }
+
+    import { onMount } from 'svelte';
+    // // let footprint;
+    
+        onMount(async () => {
+            const response = await fetch(
+                'http://127.0.0.1:5000/auth/login',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: postData['email'],
+                        password:   postData['password'],
+                    })
+                }
+            );
+            const data = await response.json();
+            console.log(data)
+
+            if (data.success){
+                console.log("YES")
+            }
+            else{
+                console.log("NO")
+            }
+            // footprint = data.carbonFootprint;
+        });
+
+
+        function formHandler(event) {
+            event.preventDefault()
+
+            fetch('http://127.0.0.1:5000/auth/login',{
+            method:  'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: postData['email'],
+                password:   postData['password'],
+            })
+            })
+            .then(response => response.json())
+            .then(result => console.log(result))
+
+            
+  }
+
+
+
+    
+  </script>
+  
+
 <center>
+    <form>
+        <div>
+          <label for="userId">UserID:</label>
+          <input type="text" id="email" bind:value={postData.email}>
+        </div>
+        <div>
+          <label for="title">Title: </label>
+          <input type="text" id="password" bind:value={postData.password}>
+        </div>
+        <button on:click="{formHandler}">Create Post</button>
+      </form>
+      
 	<form style="width:30%;margin-top:10em;" method="post">
 		<div class="mb-6">
 			<input
