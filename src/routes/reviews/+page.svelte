@@ -52,7 +52,7 @@
     </center>
 
     {#each resultData as review}
-    <div style="margin-left:1em;padding-bottom:1em;border-radius:1em;display:inline-block;background-color:whitesmoke;border:none;" class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" >
+    <div style="margin-left:1em;padding-bottom:1em;border-radius:1em;display:inline-block;background-color:whitesmoke;border:none" class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" >
         <a href="src/public/dune.jpg" target="_blank">
         <img class="rounded-t-lg" src="src/public/dune.jpg" style="border-radius:1em 1em 0 0;" alt="sss" />
         </a>
@@ -73,7 +73,7 @@
                 {/each}
             </ul>
             <br>
-        <h2 style="font-size:1.2em;margin-top:-0.8em"  class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Description</h2>
+        <h2 style="font-size:1.2em;margin-top:-1.5em"  class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Description</h2>
         <p style="margin-bottom:1em;margin-top:-0.5em;color:black;font-size:1.2em;" class="mb-3 font-normal text-gray-700 dark:text-gray-400">{review.movie_description}</p>
         <center>
         <a style="background-color:#5C728A;" href='/biodata' class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
