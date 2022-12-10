@@ -1,6 +1,11 @@
 <script context="module">
     import { accessToken } from '../store.js'
     import { refreshToken } from '../store.js'
+    import { browser } from '$app/environment'
+
+    import { redirect } from '@sveltejs/kit';
+ 
+    let token = browser ? localStorage.getItem('accessToken') : ''
 
     const loginInfo = {
         email: '',
@@ -13,14 +18,16 @@
             "success": false,
             "data": {}
         }
-    
-    
+
+
     function gatherData(data){
         resultData = data;
 
         if (resultData.success = true){
-            accessToken.set(resultData.data.access_token)
-            refreshToken.set(resultData.data.refresh_token)
+            localStorage.setItem('accessToken', resultData.data.access_token);
+			localStorage.setItem('refreshToken', resultData.data.refresh_token);
+            token = browser ? localStorage.getItem('accessToken') : ''
+            window.location.replace("http://localhost:5173/reviews")
 		}
         console.log(resultData)
   }
@@ -83,10 +90,9 @@
 	</form>
 </center>
 
-{#if $accessToken != 'None'}
+{#if token}
 
-<a href="/reviews" style="color:blue">Look at your reviews</a>
-
+{token}
 {:else}
 you are not logged in
 
