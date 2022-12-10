@@ -1,5 +1,53 @@
+<script>
+ 	import { accessToken } from '../store.js'
+    import { refreshToken } from '../store.js'  
+   const registerInfo = {
+        name:'',
+		email: '',
+        password: '',
+  }
+
+    let resultData = 
+        {
+            "message": '',
+            "success": false,
+            "data": {}
+        }
+    
+
+    function gatherData(data){
+		resultData = data;
+
+		if (resultData.success = true){
+			accessToken.set(resultData.data.access_token)
+			refreshToken.set(resultData.data.refresh_token)
+		}
+		console.log(resultData)
+  }
+
+        function formHandler(event) {
+            event.preventDefault()
+
+            fetch('http://127.0.0.1:5000/auth/register',{
+            method:  'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+				name: registerInfo['name'],
+                email: registerInfo['email'],
+                password:   registerInfo['password'],
+            })
+            })
+            .then(response => response.json())
+            .then(result => gatherData(result))
+  }
+
+  </script>
+
+
 <center>
-	<form style="width:30%;margin-top:10em;" method="post">
+	<form style="width:30%;margin-top:10em;" method="post" on:submit="{formHandler}">
 		<div class="mb-6">
 			<input
 				name="name"
@@ -7,6 +55,7 @@
 				id="name"
 				class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 				placeholder="Username"
+				bind:value={registerInfo.name}
 				required
 			/>
 		</div>
@@ -17,6 +66,7 @@
 				id="email"
 				class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 				placeholder="Email"
+				bind:value={registerInfo.email}
 				required
 			/>
 		</div>
@@ -27,6 +77,7 @@
 				id="password"
 				class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 				placeholder="Password"
+				bind:value={registerInfo.password}
 				required
 			/>
 		</div>
@@ -38,6 +89,15 @@
 		/>
 	</form>
 </center>
+
+{#if $accessToken != 'None'}
+
+<a href="/reviews" style="color:blue">Look at your reviews</a>
+
+{:else}
+you are not logged in
+
+{/if}
 
 <style>
     #email, #password, #name{

@@ -1,39 +1,31 @@
-<script>
-const postData = {
-    email: 'silvester@weebhood.com',
-    password: 'silvester',
+<script context="module">
+    import { accessToken } from '../store.js'
+    import { refreshToken } from '../store.js'
+
+    const loginInfo = {
+        email: '',
+        password: '',
+    }
+    
+    let resultData = 
+        {
+            "message": '',
+            "success": false,
+            "data": {}
+        }
+    
+    
+    function gatherData(data){
+        resultData = data;
+
+        if (resultData.success = true){
+            accessToken.set(resultData.data.access_token)
+            refreshToken.set(resultData.data.refresh_token)
+		}
+        console.log(resultData)
   }
 
-    import { onMount } from 'svelte';
-    // // let footprint;
-    
-        onMount(async () => {
-            const response = await fetch(
-                'http://127.0.0.1:5000/auth/login',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: postData['email'],
-                        password:   postData['password'],
-                    })
-                }
-            );
-            const data = await response.json();
-            console.log(data)
-
-            if (data.success){
-                console.log("YES")
-            }
-            else{
-                console.log("NO")
-            }
-            // footprint = data.carbonFootprint;
-        });
-
-
+ 
         function formHandler(event) {
             event.preventDefault()
 
@@ -43,36 +35,23 @@ const postData = {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: postData['email'],
-                password:   postData['password'],
+                email: loginInfo['email'],
+                password:   loginInfo['password'],
             })
             })
             .then(response => response.json())
-            .then(result => console.log(result))
-
-            
+            .then(result => gatherData(result))
   }
 
-
-
-    
   </script>
+
+
   
 
 <center>
-    <form>
-        <div>
-          <label for="userId">UserID:</label>
-          <input type="text" id="email" bind:value={postData.email}>
-        </div>
-        <div>
-          <label for="title">Title: </label>
-          <input type="text" id="password" bind:value={postData.password}>
-        </div>
-        <button on:click="{formHandler}">Create Post</button>
-      </form>
+  
       
-	<form style="width:30%;margin-top:10em;" method="post">
+	<form style="width:30%;margin-top:10em;" method="post" on:submit="{formHandler}">
 		<div class="mb-6">
 			<input
 				name="email"
@@ -80,6 +59,7 @@ const postData = {
 				id="email"
 				class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 				placeholder="Email"
+                bind:value={loginInfo.email}
 				required
 			/>
 		</div>
@@ -90,6 +70,7 @@ const postData = {
 				id="password"
 				class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 				placeholder="Password"
+                bind:value={loginInfo.password}
 				required
 			/>
 		</div>
@@ -101,6 +82,15 @@ const postData = {
 		/>
 	</form>
 </center>
+
+{#if $accessToken != 'None'}
+
+<a href="/reviews" style="color:blue">Look at your reviews</a>
+
+{:else}
+you are not logged in
+
+{/if}
 
 <style>
     #email, #password{
