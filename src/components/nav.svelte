@@ -1,4 +1,13 @@
 <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js">
+import { browser } from '$app/environment'
+
+let token = browser ? localStorage.getItem('accessToken') : ''
+function logout(){
+	localStorage.setItem('accessToken', 'None');
+	localStorage.setItem('refreshToken', 'None');
+	token = browser ? localStorage.getItem('accessToken') : ''
+}
+
 
 </script>
 
@@ -78,6 +87,14 @@
 								href="#"
 								class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
 								>Contact</a
+							>
+
+							
+							<a
+								href="/about"
+								class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+								on:click={logout}
+								>Logout</a
 							>
 						</div>
 					</div>
