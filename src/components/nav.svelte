@@ -1,11 +1,29 @@
-<script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js">
+<scritp src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></scritp>
+
+<script >
 import { browser } from '$app/environment'
 
-let token = browser ? localStorage.getItem('accessToken') : ''
+let accessToken = browser ? localStorage.getItem('accessToken') : ''
+let refreshToken = browser ? localStorage.getItem('accessToken') : ''
+
 function logout(){
+	fetch('http://127.0.0.1:5000/auth/logout',{
+            method:  'POST',
+            headers: {
+				'Content-Type': 'application/json',
+				'Authorization': "Bearer " + accessToken
+            },
+            body: JSON.stringify({
+				refresh_token: refreshToken
+            })
+            })
+            .then(response => response.json())
+            .then(result => console.log(result))
 	localStorage.setItem('accessToken', 'None');
 	localStorage.setItem('refreshToken', 'None');
-	token = browser ? localStorage.getItem('accessToken') : ''
+	accessToken = browser ? localStorage.getItem('accessToken') : ''
+	refreshToken = browser ? localStorage.getItem('refreshToken') : ''
+	{window.location.replace("http://localhost:5173/")}
 }
 
 
