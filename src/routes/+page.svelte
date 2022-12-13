@@ -1,37 +1,14 @@
 <script>
-	// import Modal from '../components/Modal.svelte';
-	// let showLoginModal = false;
+	 import { browser } from '$app/environment'
+	import { redirect } from '@sveltejs/kit';
+
+let accessToken = browser ? localStorage.getItem('accessToken') : ''
+let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
+
 </script>
 
-<!-- {#if showLoginModal}
-	<Modal on:close={() => (showLoginModal = false)}>
-		<h1 slot="header" style="text-align:center">Login</h1>
-		<center>
-			<form class="w-full max-w-sm" style="margin-top:1em;">
-				<input
-					style="margin-bottom:1em;background-color:white;border:none;"
-					class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-					id="inline-full-name"
-					type="email"
-					placeholder="Email"
-				/>
-				<input
-					style="background-color:white;border:none;"
-					class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-					id="inline-password"
-					type="password"
-					placeholder="Password"
-				/>
-				<button
-					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-					style="background-color:#5C728A;margin-top:0.5em;margin-bottom:1em;"
-				>
-					Login
-				</button>
-			</form>
-		</center></Modal
-	>
-{/if} -->
+
+{#if accessToken == 'None'}
 
 <center>
 	<div id="buttons" style="">
@@ -63,3 +40,10 @@
 		
 	</div>
 </center>
+
+
+
+{:else}
+
+
+{/if}

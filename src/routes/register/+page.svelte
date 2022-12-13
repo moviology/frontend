@@ -21,7 +21,7 @@
     function gatherData(data){
 		resultData = data;
 
-		if (resultData.success = true){
+		if (resultData.success){
 			localStorage.setItem('accessToken', resultData.data.access_token);
 			localStorage.setItem('refreshToken', resultData.data.refresh_token);
 			accessToken = browser ? localStorage.getItem('accessToken') : ''
