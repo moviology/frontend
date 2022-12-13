@@ -47,6 +47,15 @@
         {window.location.replace("http://localhost:5173/reviews")}
   }
 
+    let  fileinput;
+	const onFileSelected =(e)=>
+    {
+        let video = e.target.files[0];
+        let reader = new FileReader();
+        reader.readAsDataURL(video);
+    
+    }
+
   </script>
 
 {#if accessToken != 'None'}
@@ -91,13 +100,16 @@
 			/>
 		</div>
         <div class="mb-6">
+            <img class="upload" src="https://static.thenounproject.com/png/556238-200.png" alt="" on:click={()=>{fileinput.click();}} />
+            <div class="chan" on:click={()=>{fileinput.click();}}>Choose Video</div>
 			<input
 				name="movie_url"
-				type="text"
+				type="file"
 				id="movie_url"
 				class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 				placeholder="Movie URL"
                 bind:value={bookingInfo.movie_url}
+                on:change={(e)=>onFileSelected(e)} bind:this={fileinput}
 				required
 			/>
 		</div>
