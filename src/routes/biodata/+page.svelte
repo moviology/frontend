@@ -8,15 +8,22 @@
     let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
 	let reviewId = browser ? localStorage.getItem('reviewId') : ''
 
-    let resultData = []
+
+
+	let resultData = []
 	let heartRates = []
 	let sweatRates = []
 
 	let heartsCount = 0
 	let sweatCount = 0
 
-	let heartDataSetCount = 1
-	let sweatDataSetCount = 1
+	let heartDataSetCount = 0
+	let sweatDataSetCount = 0
+
+	 let finalSize = -1
+	 let currentSize = 0
+
+	let printed = false
 
 	function populateDataSet(dataset){
 		console.log(dataset)
@@ -42,23 +49,20 @@
 	
 	}
 
+	function updateCounts(){
+		heartDataSetCount++
+		sweatDataSetCount++
+		currentSize++
+		heartsCount = 0
+		sweatCount = 0
+		finalSize = resultData.length
+	}
+
 	function handlePopulate(dataset){
 		populateDataSet(dataset)
 	}
 
-
-	function iterateData(){
-		for (let i = 0; i < resultData.length; i++){
-			for (let j = 0; i < resultData[i].length; j++){
-				handlePopulate(resultData[i][j])
-			}
-			heartDataSetCount++
-			sweatDataSetCount++
-		}
-	}
-
-
-    function gatherData(data){
+	function gatherData(data){
         console.log(data)
         resultData = data.data
 		console.log(resultData)
@@ -75,7 +79,6 @@
         .then(result => gatherData(result))
   });
 
-
 	import "@carbon/styles/css/styles.css";
 	import "@carbon/charts/styles.css";
 	import { append } from "svelte/internal";
@@ -83,25 +86,35 @@
 
 {#each resultData as review}
 
+{console.log("first for loop")}
 
 {#each review.data_set as data_set}
 
-{handlePopulate(data_set)}
 
+<p hidden>{handlePopulate(data_set)}</p>
 
 
 {/each}
 
+{console.log("printing sizes")}
+{console.log(currentSize)}
+{console.log(finalSize)}
+{console.log("ended printing sizes")}
+{finalSize = resultData.length}
 
+{#if currentSize === finalSize}
+{console.log("inside of if")}
+{console.log(currentSize)}
+{console.log(finalSize)}
 <LineChart
 	data={
 		heartRates
 	}
 	options={{
-	"title": "Line (dense time series)",
+	"title": "Heart Rate of audience members",
 	"axes": {
 		"bottom": {
-			"title": "2019 Annual Sales Figures",
+			"title": "Heart rate of audience members",
 			"mapsTo": "date",
 			"scaleType": "linear"
 		},
@@ -115,16 +128,16 @@
 	"height": "400px"
 }}
 	/>
-
+<br><br><br>
 	<LineChart
 	data={
 		sweatRates
 	}
 	options={{
-	"title": "Line (dense time series)",
+	"title": "Perspiration of audience members",
 	"axes": {
 		"bottom": {
-			"title": "2019 Annual Sales Figures",
+			"title": "Perspiration of audience members",
 			"mapsTo": "date",
 			"scaleType": "linear"
 		},
@@ -139,5 +152,11 @@
 }}
 	/>
 
+	{console.log("finished charts")}
 
+	{/if}
+
+	{console.log("outside if")}
+
+	{updateCounts()}
 	{/each}
