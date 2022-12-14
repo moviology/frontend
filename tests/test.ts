@@ -1,13 +1,12 @@
 import { expect, test } from '@playwright/test';
 
-
 //Test login using playwright
 test('index page has expected h1', async ({ page }) => {
 	await page.goto('http://localhost:5173/login');
-  	//await page.getByText('Login').click();
-  	await page.getByLabel('Email').fill('silvester@weebhood.com');
-  	await page.getByLabel('Password').fill('silvester');
-  	await page.getByText('login').click();
+	//await page.getByText('Login').click();
+	await page.getByLabel('Email').fill('silvester@weebhood.com');
+	await page.getByLabel('Password').fill('silvester');
+	await page.getByText('login').click();
 });
 
 //Test register using playwright
@@ -23,4 +22,3 @@ test('index page has expected h1', async ({ page }) => {
 test('index page has expected h1', async ({ page }) => {
 	await page.goto('http://localhost:5173/logout');
 });
-

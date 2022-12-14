@@ -71,21 +71,20 @@
 				title: review.title,
 				axes: {
 					bottom: {
-						title: 'Timestamp',
+						title: 'Time (hh:mm:ss)',
 						mapsTo: 'timestamp',
 						scaleType: 'labels'
 					},
 					left: {
 						mapsTo: 'value',
-						title: 'Values',
+						title: 'Heart Rate: BPM | Perspiration: GSR',
 						scaleType: 'linear'
 					}
 				},
 				curve: 'curveMonotoneX',
 				height: '600px',
-            theme: 'g10'
+				theme: 'g10'
 			}}
 		/>
 	{/each}
 {/if}
-

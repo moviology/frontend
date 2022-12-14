@@ -8,9 +8,9 @@ const config = {
 	// preprocess: preprocess(),
 	preprocess: [
 		preprocess({
-		  postcss: true,
-		}),
-	  ],
+			postcss: true
+		})
+	],
 
 	kit: {
 		adapter: adapter()

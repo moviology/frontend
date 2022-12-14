@@ -10,7 +10,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"noImplicitAny": false,
-		"outDir": "build",
+		"outDir": "build"
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//

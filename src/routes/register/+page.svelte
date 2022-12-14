@@ -1,59 +1,55 @@
 <script>
-	import { browser } from '$app/environment'
-	
-   const registerInfo = {
-        name:'',
+	import { browser } from '$app/environment';
+
+	const registerInfo = {
+		name: '',
 		email: '',
-        password: '',
-  }
+		password: ''
+	};
 
-  let accessToken = browser ? localStorage.getItem('accessToken') : ''
-  let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
+	let accessToken = browser ? localStorage.getItem('accessToken') : '';
+	let refreshToken = browser ? localStorage.getItem('refreshToken') : '';
 
-    let resultData = 
-        {
-            "message": '',
-            "success": false,
-            "data": {}
-        }
-    
+	let resultData = {
+		message: '',
+		success: false,
+		data: {}
+	};
 
-    function gatherData(data){
+	function gatherData(data) {
 		resultData = data;
 
-		if (resultData.success){
+		if (resultData.success) {
 			localStorage.setItem('accessToken', resultData.data.access_token);
 			localStorage.setItem('refreshToken', resultData.data.refresh_token);
-			accessToken = browser ? localStorage.getItem('accessToken') : ''
-			refreshToken = browser ? localStorage.getItem('refreshToken') : ''
-			window.location.replace("http://localhost:5173/reviews")
+			accessToken = browser ? localStorage.getItem('accessToken') : '';
+			refreshToken = browser ? localStorage.getItem('refreshToken') : '';
+			window.location.replace('http://localhost:5173/reviews');
 		}
-		console.log(resultData)
-  }
+		console.log(resultData);
+	}
 
-        function formHandler(event) {
-            event.preventDefault()
+	function formHandler(event) {
+		event.preventDefault();
 
-            fetch('http://127.0.0.1:5000/auth/register',{
-            method:  'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+		fetch('http://127.0.0.1:5000/auth/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
 				name: registerInfo['name'],
-                email: registerInfo['email'],
-                password:   registerInfo['password'],
-            })
-            })
-            .then(response => response.json())
-            .then(result => gatherData(result))
-  }
-
-  </script>
-
+				email: registerInfo['email'],
+				password: registerInfo['password']
+			})
+		})
+			.then((response) => response.json())
+			.then((result) => gatherData(result));
+	}
+</script>
 
 <center>
-	<form style="width:30%;margin-top:10em;" method="post" on:submit="{formHandler}">
+	<form style="width:30%;margin-top:10em;" method="post" on:submit={formHandler}>
 		<div class="mb-6">
 			<input
 				name="name"
@@ -97,16 +93,17 @@
 </center>
 
 {#if accessToken}
-
-{accessToken}
+	{accessToken}
 {:else}
-you are not logged in
-
+	you are not logged in
 {/if}
+
 <style>
-    #email, #password, #name{
-        background-color: white;
-        border:0;
-        color:black;
-    }
+	#email,
+	#password,
+	#name {
+		background-color: white;
+		border: 0;
+		color: black;
+	}
 </style>

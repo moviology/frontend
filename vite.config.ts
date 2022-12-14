@@ -3,7 +3,7 @@ import type { UserConfig } from 'vite';
 
 const config: UserConfig = {
 	plugins: [sveltekit()],
-	optimizeDeps: { include: ["@carbon/charts"] }
+	optimizeDeps: { include: ['@carbon/charts'] }
 };
 
 export default config;

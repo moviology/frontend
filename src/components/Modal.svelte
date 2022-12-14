@@ -6,7 +6,7 @@
 
 	let modal;
 
-	const handle_keydown = e => {
+	const handle_keydown = (e) => {
 		if (e.key === 'Escape') {
 			close();
 			return;
@@ -15,7 +15,7 @@
 		if (e.key === 'Tab') {
 			// trap focus
 			const nodes = modal.querySelectorAll('*');
-			const tabbable = Array.from(nodes).filter(n => n.tabIndex >= 0);
+			const tabbable = Array.from(nodes).filter((n) => n.tabIndex >= 0);
 
 			let index = tabbable.indexOf(document.activeElement);
 			if (index === -1 && e.shiftKey) index = 0;
@@ -37,22 +37,27 @@
 	}
 </script>
 
-<svelte:window on:keydown={handle_keydown}/>
+<svelte:window on:keydown={handle_keydown} />
 
-<div class="modal-background" on:click={close}></div>
+<div class="modal-background" on:click={close} />
 
 <div class="modal" role="dialog" aria-modal="true" bind:this={modal}>
-	<slot name="header"></slot>
-	<hr>
-	<slot></slot>
-	<hr>
+	<slot name="header" />
+	<hr />
+	<slot />
+	<hr />
 
 	<!-- svelte-ignore a11y-autofocus -->
-    <center>
-    <button autofocus on:click={close} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="background-color:#5C728A;margin-top:0.5em;">
-        Cancel
-      </button>
-    </center>
+	<center>
+		<button
+			autofocus
+			on:click={close}
+			class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+			style="background-color:#5C728A;margin-top:0.5em;"
+		>
+			Cancel
+		</button>
+	</center>
 </div>
 
 <style>
@@ -62,7 +67,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(0,0,0,0.3);
+		background: rgba(0, 0, 0, 0.3);
 	}
 
 	.modal {
@@ -73,10 +78,10 @@
 		max-width: 32em;
 		max-height: calc(100vh - 4em);
 		overflow: auto;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%, -50%);
 		padding: 1em;
 		border-radius: 0.5em;
-		background: #CCE1EA;
+		background: #cce1ea;
 	}
 
 	button {
