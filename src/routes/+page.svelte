@@ -8,7 +8,7 @@ let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
 </script>
 
 
-{#if accessToken == 'None'}
+
 
 <center>
 	<div id="buttons" style="">
@@ -43,7 +43,3 @@ let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
 
 
 
-{:else}
-
-
-{/if}

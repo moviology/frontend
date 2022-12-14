@@ -97,8 +97,7 @@
 {/each}
 
 {console.log("printing sizes")}
-{console.log(currentSize)}
-{console.log(finalSize)}
+
 {console.log("ended printing sizes")}
 {finalSize = resultData.length}
 
@@ -114,13 +113,13 @@
 	"title": "Heart Rate of audience members",
 	"axes": {
 		"bottom": {
-			"title": "Heart rate of audience members",
+			"title": "Time (seconds)",
 			"mapsTo": "date",
 			"scaleType": "linear"
 		},
 		"left": {
 			"mapsTo": "value",
-			"title": "Conversion rate",
+			"title": "Heart Rate(bpm)",
 			"scaleType": "linear"
 		}
 	},
@@ -137,13 +136,13 @@
 	"title": "Perspiration of audience members",
 	"axes": {
 		"bottom": {
-			"title": "Perspiration of audience members",
+			"title": "Time (seconds)",
 			"mapsTo": "date",
 			"scaleType": "linear"
 		},
 		"left": {
 			"mapsTo": "value",
-			"title": "Conversion rate",
+			"title": "Perspiration",
 			"scaleType": "linear"
 		}
 	},
