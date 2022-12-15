@@ -4,11 +4,12 @@
 
    let genres = ['Action', 'Adventure', 'Comedy', 'Horror']
    let selectedGenres = []
-
+   let movieFile = undefined
    let accessToken = browser ? localStorage.getItem('accessToken') : ''
    let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
 
    const bookingInfo = {
+      movie_id: '',
       movie_title: '',
       movie_description: '',
       review_date: '',
@@ -26,6 +27,7 @@
             selectedGenres.push(genres[i])
          }
       }
+      uploadVideo()
 
       fetch('http://127.0.0.1:5000/reviews/book', {
          method: 'POST',
@@ -34,6 +36,7 @@
             'Content-Type': 'application/json'
          },
          body: JSON.stringify({
+            movie_id: bookingInfo['movie_id'],
             movie_title: bookingInfo['movie_title'],
             movie_description: bookingInfo['movie_description'],
             review_date: bookingInfo['review_date'],
@@ -49,11 +52,24 @@
       }
    }
 
+   function uploadVideo() {
+      let formData = new FormData();           
+      formData.append("file", movieFile);  
+      fetch('http://127.0.0.1:5000/reviews/uploadVideo', {
+         method: 'POST',
+         headers: {
+            Authorization: 'Bearer' + accessToken,
+            'Content-Type': 'application/json'
+         },
+         body: formData
+      })
+      alert('The file has been uploaded successfully.');
+   }
+
    let fileinput
    const onFileSelected = e => {
-      let video = e.target.files[0]
-      let reader = new FileReader()
-      reader.readAsDataURL(video)
+      movieFile = e.target.files[0]
+      
    }
 </script>
 
