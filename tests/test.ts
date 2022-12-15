@@ -22,3 +22,30 @@ test('index page has expected h1', async ({ page }) => {
 test('index page has expected h1', async ({ page }) => {
    await page.goto('http://localhost:5173/logout')
 })
+
+//Test book using playwright
+test('index page has expected h1', async ({ page }) => {
+   await page.goto('http://localhost:5173/book')
+   await page.getByLabel('movie_title').fill('testMovie')
+   await page.getByLabel('movie_description').fill('testDescription')
+   await page.getByLabel('movie_genre').fill('testGenre')
+   await page.getByText('Book').click()
+})
+
+//Test delete using playwright
+test('index page has expected h1', async ({ page }) => {
+   await page.goto('http://localhost:5173/delete')
+   await page.getByText('Delete').click()
+})
+
+//Test viewing biodata using playwright
+test('index page has expected h1', async ({ page }) => {
+   await page.goto('http://localhost:5173/biodata')
+   await page.getByText('View').click()
+})
+
+//Test downloading biodata using playwright
+test('index page has expected h1', async ({ page }) => {
+   await page.goto('http://localhost:5173/biodata')
+   await page.getByText('Download').click()
+})

@@ -19,24 +19,7 @@
       movie_genres: ''
    }
 
-   
-   let resultData = {
-      message: '',
-      success: false,
-      data: {}
-   }
-
-   function gatherData(data) {
-      resultData = data
-      localStorage.setItem("reviewId", resultData.data._id)
-      // if (resultData.success) {
-      //    goto('http://localhost:5173/reviews')
-      // }
-      console.log(resultData)
-   }
-
-
-   function formHandler(event) {
+   async function formHandler(event) {
       event.preventDefault()
 
       for (let i = 0; i < genres.length; i++) {
@@ -46,7 +29,43 @@
             selectedGenres.push(genres[i])
          }
       }
-      
+
+      try {
+         const bookingRes = await fetch('http://127.0.0.1:5000/reviews/book', {
+            method: 'POST',
+            headers: {
+               Authorization: 'Bearer ' + accessToken,
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+               movie_title: bookingInfo['movie_title'],
+               movie_description: bookingInfo['movie_description'],
+               review_date: bookingInfo['review_date'],
+               movie_url: bookingInfo['movie_url'],
+               movie_genres: selectedGenres
+            })
+         })
+
+         const reviewId = (await bookingRes.json()).data._id
+
+         let formData = new FormData()
+         formData.append('file', movieFile)
+
+         const videoUploadRes = await fetch(
+            `http://127.0.0.1:5000/reviews/uploadVideo/${reviewId}`,
+            {
+               method: 'POST',
+               headers: {
+                  Authorization: 'Bearer ' + accessToken
+               },
+               body: formData
+            }
+         )
+
+         console.log('The movie has been uploaded')
+      } catch (e) {
+         console.log('movie not uploaded')
+      }
 
       fetch('http://127.0.0.1:5000/reviews/book', {
          method: 'POST',
@@ -73,31 +92,24 @@
       }
    }
 
-   let fileinput
-   const onFileSelected = e => {
-      movieFile = e.target.files[0]
-      
-   }
-
-   function uploadVideo(currentReviewId) {
-      let formData = new FormData();     
-      console.log(movieFile)
-      console.log(currentReviewId)
-      formData.append("file", movieFile);  
-      fetch('http://127.0.0.1:5000/reviews/uploadVideo/' + currentReviewId, {
+   function uploadVideo() {
+      let formData = new FormData()
+      formData.append('file', movieFile)
+      fetch('http://127.0.0.1:5000/reviews/uploadVideo', {
          method: 'POST',
          headers: {
-            Authorization: 'Bearer ' + accessToken,
+            Authorization: 'Bearer ' + accessToken
             // 'Content-Type': 'multipart/form-data'
          },
          body: formData
-      })
-      .then(response => response.json())
-      .then(result => console.log(result))
-      alert('The file has been uploaded successfully.');
+      }).catch(e => console.log('UPLOAD MOVIE FAILED'))
+      alert('The file has been uploaded successfully.')
    }
 
-   
+   let fileinput
+   const onFileSelected = e => {
+      movieFile = e.target.files[0]
+   }
 </script>
 
 {#if accessToken != 'None'}
