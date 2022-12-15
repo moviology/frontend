@@ -183,7 +183,7 @@ function stop() {
       <br><br>
       <center>
       <video id="video" width="1000" controls>
-        <source src="http://localhost:5000/static/uploads/AlUOhYfylnWjOG6ED83qD/movie.mp4" type="video/mp4">
+        <source src="http://localhost:5000/static/uploads/{movieId}/movie.mp4" type="video/mp4">
         Your browser does not support HTML video.
       </video>
    </center>
