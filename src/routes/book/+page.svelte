@@ -8,6 +8,7 @@
    let movieFile = undefined
    let accessToken = browser ? localStorage.getItem('accessToken') : ''
    let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
+   let reviewId = browser ? localStorage.getItem('reviewId') : ''
 
    const bookingInfo = {
       movie_id: '',
@@ -17,6 +18,23 @@
       movie_url: '',
       movie_genres: ''
    }
+
+   
+   let resultData = {
+      message: '',
+      success: false,
+      data: {}
+   }
+
+   function gatherData(data) {
+      resultData = data
+      localStorage.setItem("reviewId", resultData.data._id)
+      // if (resultData.success) {
+      //    goto('http://localhost:5173/reviews')
+      // }
+      console.log(resultData)
+   }
+
 
    function formHandler(event) {
       event.preventDefault()
@@ -28,7 +46,7 @@
             selectedGenres.push(genres[i])
          }
       }
-      uploadVideo()
+      
 
       fetch('http://127.0.0.1:5000/reviews/book', {
          method: 'POST',
@@ -46,25 +64,13 @@
          })
       })
          .then(response => response.json())
-         .then(result => console.log(result))
+         .then(result => uploadVideo(result.data._id))
+
+         // uploadVideo()
 
       {
          goto('/reviews')
       }
-   }
-
-   function uploadVideo() {
-      let formData = new FormData();           
-      formData.append("file", movieFile);  
-      fetch('http://127.0.0.1:5000/reviews/uploadVideo', {
-         method: 'POST',
-         headers: {
-            Authorization: 'Bearer' + accessToken,
-            'Content-Type': 'application/json'
-         },
-         body: formData
-      })
-      alert('The file has been uploaded successfully.');
    }
 
    let fileinput
@@ -72,6 +78,26 @@
       movieFile = e.target.files[0]
       
    }
+
+   function uploadVideo(currentReviewId) {
+      let formData = new FormData();     
+      console.log(movieFile)
+      console.log(currentReviewId)
+      formData.append("file", movieFile);  
+      fetch('http://127.0.0.1:5000/reviews/uploadVideo/' + currentReviewId, {
+         method: 'POST',
+         headers: {
+            Authorization: 'Bearer ' + accessToken,
+            // 'Content-Type': 'multipart/form-data'
+         },
+         body: formData
+      })
+      .then(response => response.json())
+      .then(result => console.log(result))
+      alert('The file has been uploaded successfully.');
+   }
+
+   
 </script>
 
 {#if accessToken != 'None'}

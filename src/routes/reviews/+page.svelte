@@ -12,6 +12,10 @@
       localStorage.setItem('reviewId', newId)
    }
 
+   function updateMovieId(newId){
+      localStorage.setItem('movieId', newId)
+   }
+
    function gatherData(data) {
       console.log(data)
 
@@ -140,7 +144,7 @@
                   />
                </form>
 
-               <form action="/biodata/" on:submit={() => updateReviewId(review._id)}>
+               <form action="/movie/" on:submit={() => updateMovieId(review.movie_url)}>
                   <input
                      type="submit"
                      value="View Movie"
