@@ -1,5 +1,6 @@
 <script>
    import { browser } from '$app/environment'
+   import { goto } from '$app/navigation'
    import { redirect } from '@sveltejs/kit'
 
    let genres = ['Action', 'Adventure', 'Comedy', 'Horror']
@@ -45,7 +46,7 @@
          .then(result => console.log(result))
 
       {
-         window.location.replace('http://localhost:5173/reviews')
+         goto('/reviews')
       }
    }
 
@@ -144,7 +145,7 @@
       </form>
    </center>
 {:else}
-   {window.location.replace('http://localhost:5173/')}
+   {goto('http://localhost:5173/')}
 {/if}
 
 <style>

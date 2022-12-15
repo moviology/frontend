@@ -56,10 +56,10 @@
          style="margin-left:1em;padding-bottom:1em;border-radius:1em;display:inline-block;background-color:whitesmoke;border:none"
          class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
       >
-         <a href="src/public/dune.jpg" target="_blank">
+         <a href="/dune.jpg" target="_blank">
             <img
                class="rounded-t-lg"
-               src="src/public/dune.jpg"
+               src="/dune.jpg"
                style="border-radius:1em 1em 0 0;"
                alt="sss"
             />

@@ -1,5 +1,6 @@
 <script>
    import { browser } from '$app/environment'
+   import { goto } from '$app/navigation'
 
    import { redirect } from '@sveltejs/kit'
 
@@ -25,7 +26,7 @@
          localStorage.setItem('refreshToken', resultData.data.refresh_token)
          accessToken = browser ? localStorage.getItem('accessToken') : ''
          refreshToken = browser ? localStorage.getItem('refreshToken') : ''
-         window.location.replace('http://localhost:5173/reviews')
+         goto('http://localhost:5173/reviews')
       }
       console.log(resultData)
    }

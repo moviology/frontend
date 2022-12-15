@@ -9,7 +9,7 @@
 {#if accessToken == 'None'}
    <center>
       <div id="buttons" style="">
-         <img src="src/public/logo.png" style="height:45em;" alt="logo" />
+         <img src="/logo.png" style="height:45em;" alt="logo" />
 
          <!-- Using utilities: -->
          <!-- Simplest use: modal without an `id` or callback function -->

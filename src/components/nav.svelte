@@ -1,5 +1,6 @@
 <script>
    import { browser } from '$app/environment'
+   import { goto } from '$app/navigation'
 
    let accessToken = browser ? localStorage.getItem('accessToken') : ''
    let refreshToken = browser ? localStorage.getItem('accessToken') : ''
@@ -22,7 +23,7 @@
       accessToken = browser ? localStorage.getItem('accessToken') : ''
       refreshToken = browser ? localStorage.getItem('refreshToken') : ''
       {
-         window.location.replace('http://localhost:5173/')
+         goto('/')
       }
    }
 </script>
@@ -92,12 +93,12 @@
                <div class="flex flex-shrink-0 items-center">
                   <img
                      class="block h-8 w-auto lg:hidden"
-                     src="src/public/logo.png"
+                     src="/logo.png"
                      alt="Moviology"
                   />
                   <img
                      class="hidden h-8 w-auto lg:block"
-                     src="src/public/logo.png"
+                     src="/logo.png"
                      alt="Moviology"
                   />
                   <!--        <h1 style="color:#10739E">Moviology</h1>-->
