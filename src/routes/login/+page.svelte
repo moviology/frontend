@@ -82,11 +82,11 @@
    </form>
 </center>
 
-{#if accessToken}
+<!-- {#if accessToken}
    {accessToken}
 {:else}
    you are not logged in
-{/if}
+{/if} -->
 
 <style>
    #email,

@@ -7,13 +7,12 @@
    let reviewId = browser ? localStorage.getItem('reviewId') : ''
 
    let resultData = []
+   
 
-   function updateReviewId(newId) {
-      localStorage.setItem('reviewId', newId)
-   }
+   function updateReview(newReviewId, newMovieId) {
+      localStorage.setItem('reviewId', newReviewId)
+      localStorage.setItem('movieId', newMovieId)
 
-   function updateMovieId(newId){
-      localStorage.setItem('movieId', newId)
    }
 
    function gatherData(data) {
@@ -135,7 +134,7 @@
         </a> -->
                <!-- Using utilities: -->
 
-               <form action="/biodata/" on:submit={() => updateReviewId(review._id)}>
+               <form action="/biodata/" on:submit={() => updateReview(review._id, review.movie_url)}>
                   <input
                      type="submit"
                      value="View Biometric Data"
@@ -144,7 +143,7 @@
                   />
                </form>
 
-               <form action="/movie/" on:submit={() => updateMovieId(review.movie_url)}>
+               <form action="/movie/" on:submit={() => updateReview(review._id, review.movie_url)}>
                   <input
                      type="submit"
                      value="View Movie"
