@@ -30,7 +30,7 @@
          }
       }
 
-      fetch('http://127.0.0.1:5000/reviews/book', {
+      fetch('https://api.moviology.org/reviews/book', {
          method: 'POST',
          headers: {
             Authorization: 'Bearer ' + accessToken,
