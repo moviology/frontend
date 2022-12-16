@@ -6,7 +6,7 @@
    let refreshToken = browser ? localStorage.getItem('accessToken') : ''
 
    function logout() {
-      fetch('http://127.0.0.1:5000/auth/logout', {
+      fetch('https://api.moviology.org/auth/logout', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
