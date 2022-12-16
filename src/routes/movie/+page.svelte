@@ -145,7 +145,7 @@ function stop() {
    }
 
    onMount(async () => {
-      fetch('http://127.0.0.1:5000/reviews/fetch_movie/' + movieId, {
+      fetch('https://api.moviology.org/reviews/fetch_movie/' + movieId, {
          method: 'GET',
          headers: {
             'Content-Type': 'application/json',

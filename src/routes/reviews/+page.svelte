@@ -25,7 +25,7 @@
       console.log(resultData)
    }
    onMount(async () => {
-      fetch('http://127.0.0.1:5000/reviews/profile', {
+      fetch('https://api.moviology.org/reviews/profile', {
          method: 'GET',
          headers: {
             'Content-Type': 'application/json',

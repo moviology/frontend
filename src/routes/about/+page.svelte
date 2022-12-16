@@ -1,12 +1,11 @@
 <script>
    import { browser } from '$app/environment'
    import { redirect } from '@sveltejs/kit'
+   import { goto } from '$app/navigation'
 
    let accessToken = browser ? localStorage.getItem('accessToken') : ''
    let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
 </script>
-
-<!-- {#if accessToken == 'None'} -->
 
 <center>
    <div id="buttons" style="">
@@ -36,9 +35,3 @@
       </a>
    </div>
 </center>
-
-<!-- {:else}
-
-{window.location.replace("http://localhost:5173/reviews")}
-
-{/if} -->

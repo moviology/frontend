@@ -30,43 +30,6 @@
          }
       }
 
-      // try {
-      //    const bookingRes = await fetch('http://127.0.0.1:5000/reviews/book', {
-      //       method: 'POST',
-      //       headers: {
-      //          Authorization: 'Bearer ' + accessToken,
-      //          'Content-Type': 'application/json'
-      //       },
-      //       body: JSON.stringify({
-      //          movie_title: bookingInfo['movie_title'],
-      //          movie_description: bookingInfo['movie_description'],
-      //          review_date: bookingInfo['review_date'],
-      //          movie_url: bookingInfo['movie_url'],
-      //          movie_genres: selectedGenres
-      //       })
-      //    })
-
-      //    const reviewId = (await bookingRes.json()).data._id
-
-      //    let formData = new FormData()
-      //    formData.append('file', movieFile)
-
-      //    const videoUploadRes = await fetch(
-      //       `http://127.0.0.1:5000/reviews/uploadVideo/${reviewId}`,
-      //       {
-      //          method: 'POST',
-      //          headers: {
-      //             Authorization: 'Bearer ' + accessToken
-      //          },
-      //          body: formData
-      //       }
-      //    )
-
-      //    console.log('The movie has been uploaded')
-      // } catch (e) {
-      //    console.log('movie not uploaded')
-      // }
-
       fetch('http://127.0.0.1:5000/reviews/book', {
          method: 'POST',
          headers: {
@@ -101,7 +64,7 @@
    function uploadVideo(currentReviewId) {
       let formData = new FormData()
       formData.append('file', movieFile)
-      fetch('http://127.0.0.1:5000/reviews/uploadVideo/' + currentReviewId, {
+      fetch('https://api.moviology.org/reviews/uploadVideo/' + currentReviewId, {
          method: 'POST',
          headers: {
             Authorization: 'Bearer ' + accessToken

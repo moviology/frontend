@@ -6,7 +6,6 @@
    let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
 </script>
 
-{#if accessToken == 'None'}
    <center>
       <div id="buttons" style="">
          <img src="/logo.png" style="height:45em;" alt="logo" />
@@ -35,4 +34,3 @@
          </a>
       </div>
    </center>
-{:else}{/if}

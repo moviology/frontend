@@ -33,7 +33,7 @@
    function formHandler(event) {
       event.preventDefault()
 
-      fetch('http://127.0.0.1:5000/auth/register', {
+      fetch('https://api.moviology.org/auth/register', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json'
