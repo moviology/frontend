@@ -33,10 +33,7 @@ function handlePausePlay(){
       if(video.currentTime == 0){
          const publishPayload = {
          channel: 'Moviology-Channel',
-         message: {
-            message: 'start',
-            reviewId: reviewId
-         }
+         message: 'start'
       }
       pubnub.publish(publishPayload)
       video.play(); 
@@ -44,10 +41,7 @@ function handlePausePlay(){
       else{
          const publishPayload = {
          channel: 'Moviology-Channel',
-         message: {
-            message: 'resume',
-            reviewId: reviewId
-         }
+         message: 'resume'
       }
       pubnub.publish(publishPayload)
       video.play(); 
@@ -58,10 +52,7 @@ function handlePausePlay(){
   else {
    const publishPayload = {
          channel: 'Moviology-Channel',
-         message: {
-            message: 'pause',
-            reviewId: reviewId
-         }
+         message: 'pause'
       }
       pubnub.publish(publishPayload)
       video.pause(); 
@@ -76,10 +67,7 @@ function stop() {
    
    const publishPayload = {
          channel: 'Moviology-Channel',
-         message: {
-            message: 'stop',
-            reviewId: reviewId
-         }
+         message: 'stop'
       }
       pubnub.publish(publishPayload)
       video.currentTime = 0
@@ -125,9 +113,7 @@ function stop() {
    const publishMessage = async message => {
       const publishPayload = {
          channel: 'Moviology-Channel',
-         message: {
-            message: 'start'
-         }
+         message: 'start'
       }
       await pubnub.publish(publishPayload)
    }
