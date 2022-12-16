@@ -1,6 +1,7 @@
 <script>
    import { browser } from '$app/environment'
    import { onMount } from 'svelte'
+   import { goto } from '$app/navigation'
 
    let accessToken = browser ? localStorage.getItem('accessToken') : ''
    let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
@@ -38,9 +39,8 @@
 </script>
 
 {#if accessToken == 'None'}
-   {window.location.replace('http://localhost:5173/')}
+{goto('/reviews')}
 
-   {accessToken}
 {:else}
    <center
       ><button

@@ -165,7 +165,7 @@
       </form>
    </center>
 {:else}
-   {goto('http://localhost:5173/')}
+   {goto('/')}
 {/if}
 
 <style>

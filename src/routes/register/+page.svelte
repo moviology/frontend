@@ -25,7 +25,7 @@
          localStorage.setItem('refreshToken', resultData.data.refresh_token)
          accessToken = browser ? localStorage.getItem('accessToken') : ''
          refreshToken = browser ? localStorage.getItem('refreshToken') : ''
-         goto('http://localhost:5173/reviews')
+         goto('/reviews')
       }
       console.log(resultData)
    }

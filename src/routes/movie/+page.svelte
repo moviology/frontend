@@ -2,6 +2,7 @@
    import { browser } from '$app/environment'
    import { onMount } from 'svelte'
    import PubNub from 'pubnub'
+   import { goto } from '$app/navigation'
 
    let accessToken = browser ? localStorage.getItem('accessToken') : ''
    let refreshToken = browser ? localStorage.getItem('refreshToken') : ''
@@ -158,7 +159,7 @@ function stop() {
 </script>
 
 {#if accessToken == 'None'}
-   {window.location.replace('http://localhost:5173/')}
+   {goto('/')}
 {:else}
    <!-- <input type="text" bind:value={val} />
    <button on:click={handleClick}>click me</button> -->
@@ -183,7 +184,7 @@ function stop() {
       <br><br>
       <center>
       <video id="video" width="1000" controls>
-        <source src="http://localhost:5000/static/uploads/{movieId}/movie.mp4" type="video/mp4">
+        <source src="https://api.moviology.org/reviews/static/uploads/{movieId}/movie.mp4" type="video/mp4">
         Your browser does not support HTML video.
       </video>
    </center>
