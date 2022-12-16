@@ -184,7 +184,7 @@ function stop() {
       <br><br>
       <center>
       <video id="video" width="1000" controls>
-        <source src="https://api.moviology.org/reviews/static/uploads/{movieId}/movie.mp4" type="video/mp4">
+        <source src="https://api.moviology.org/static/uploads/{movieId}/movie.mp4" type="video/mp4">
         Your browser does not support HTML video.
       </video>
    </center>
