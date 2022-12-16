@@ -101,7 +101,7 @@ function stop() {
    let pubnub = new PubNub({
       publishKey: 'pub-c-60cb8668-e930-4e11-bb2e-65996cf9d14a',
       subscribeKey: 'sub-c-7e0595fb-09cc-4333-b707-b20f4a6b96cd',
-      userId: 'HELLO'
+      userId: 'Kacper-device'
    })
 
    const listener = {
